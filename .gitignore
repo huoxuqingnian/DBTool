@@ -1,0 +1,10 @@
+
+*.pdb
+*.Cache
+*.resx
+*.resources
+*.manifest
+*.csproj
+*.suo
+obj/
+

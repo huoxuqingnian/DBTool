@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace DBTool
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
+        }
+
+        private void menuItem_About_Click(object sender, EventArgs e)
+        {
+            new Form_MenuItem_About().ShowDialog();
         }
     }
 }
