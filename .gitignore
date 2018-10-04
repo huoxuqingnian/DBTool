@@ -6,5 +6,7 @@
 *.manifest
 *.csproj
 *.suo
+*.cache
+*.exe
 obj/
 

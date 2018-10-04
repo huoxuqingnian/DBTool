@@ -21,5 +21,10 @@ namespace DBTool
         {
             new Form_MenuItem_About().ShowDialog();
         }
+
+        private void menuItem_DataBase_Click(object sender, EventArgs e)
+        {
+            new Form_DBAbout().ShowDialog();
+        }
     }
 }

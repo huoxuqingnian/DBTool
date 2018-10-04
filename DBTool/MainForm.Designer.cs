@@ -67,6 +67,7 @@
             this.menuItem_DataBase.Name = "menuItem_DataBase";
             this.menuItem_DataBase.Size = new System.Drawing.Size(153, 22);
             this.menuItem_DataBase.Text = "数据库相关(D)";
+            this.menuItem_DataBase.Click += new System.EventHandler(this.menuItem_DataBase_Click);
             // 
             // toolStripSeparator1
             // 
