@@ -15,6 +15,7 @@ namespace DBTool
         public MainForm()
         {
             InitializeComponent();
+            this.Text = string.Format("Version {0}  LastUpdate：{1}", "1.0", DateTime.Now.ToShortDateString());
         }
 
         private void menuItem_About_Click(object sender, EventArgs e)

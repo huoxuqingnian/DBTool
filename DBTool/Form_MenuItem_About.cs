@@ -20,8 +20,8 @@ namespace DBTool
         private void about_LinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             string url = about_LinkLabel1.Text;
-            //System.Diagnostics.Process.Start("iexplore.exe", url);
-            System.Diagnostics.Process.Start("firefox.exe", url);
+            // 调用系统默认浏览器
+            System.Diagnostics.Process.Start(url);
         }
     }
 }

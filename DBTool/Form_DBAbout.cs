@@ -12,11 +12,18 @@ namespace DBTool
 {
     public partial class Form_DBAbout : Form
     {
+        #region
+        private string dbstring = string.Empty;
+        private static string xmlFileName = "D:\\Documents\\Visual Studio 2013\\Projects\\DBTool\\DBTool\\Config\\DBSetting.xml";
+        private static XmlOperation xo = new XmlOperation();  
+
+        #endregion
         public Form_DBAbout()
         {
             InitializeComponent();
-            XmlOperation xo = new XmlOperation("D:\\Documents\\Visual Studio 2013\\Projects\\DBTool\\DBTool\\Config\\DBSetting.xml");  
-            this.textBox_DBString.Text = xo.QueryElementAttribute("DBSetting", "ConnectionString");
+            xo = new XmlOperation(xmlFileName);
+            this.textBox_DBString.Text = xo.QueryElementAttribute(null, "DBSetting", "ConnectionString");
+            this.dbstring = this.textBox_DBString.Text;
         }
 
         private void radioButton_DBString_CheckedChanged(object sender, EventArgs e)
@@ -48,6 +55,17 @@ namespace DBTool
 
         private void button_Submit_Click(object sender, EventArgs e)
         {
+            string dbstring_new = this.textBox_DBString.Text;
+            if (dbstring == dbstring_new)
+            {
+                this.Close();
+                return;
+            }
+            else
+            {
+                dbstring = dbstring_new;
+                xo.UpdateElementAttribute(xo.RootNodeName, "DBSetting", "ConnectionString", dbstring_new);
+            }
             this.Close();
         }
 
