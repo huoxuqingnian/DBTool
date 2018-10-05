@@ -103,6 +103,7 @@
             this.textBox_DBString.Name = "textBox_DBString";
             this.textBox_DBString.Size = new System.Drawing.Size(390, 42);
             this.textBox_DBString.TabIndex = 1;
+            this.textBox_DBString.TextChanged += new System.EventHandler(this.textBox_DBString_TextChanged);
             // 
             // label2
             // 
@@ -251,6 +252,7 @@
             this.button_ConnectionTest.TabIndex = 5;
             this.button_ConnectionTest.Text = "连接测试";
             this.button_ConnectionTest.UseVisualStyleBackColor = true;
+            this.button_ConnectionTest.Click += new System.EventHandler(this.button_ConnectionTest_Click);
             // 
             // Form_DBAbout
             // 

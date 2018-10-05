@@ -14,6 +14,7 @@ namespace DBTool
     {
         #region
         private string dbstring = string.Empty;
+        private string dbstring_conn = string.Empty;
         private static string xmlFileName = "D:\\Documents\\Visual Studio 2013\\Projects\\DBTool\\DBTool\\Config\\DBSetting.xml";
         private static XmlOperation xo = new XmlOperation();  
 
@@ -22,7 +23,7 @@ namespace DBTool
         {
             InitializeComponent();
             xo = new XmlOperation(xmlFileName);
-            this.textBox_DBString.Text = xo.QueryElementAttribute(null, "DBSetting", "ConnectionString");
+            this.textBox_DBString.Text = xo.QueryElementAttribute(null, "CustomSetting", "ConnectionString");
             this.dbstring = this.textBox_DBString.Text;
         }
 
@@ -38,6 +39,7 @@ namespace DBTool
             if (!radioButton_DBString.Checked)
             {
                 panel_DBString.Visible = false;
+                textBox_DBString.Text = dbstring;
             }
         }
 
@@ -64,7 +66,7 @@ namespace DBTool
             else
             {
                 dbstring = dbstring_new;
-                xo.UpdateElementAttribute(xo.RootNodeName, "DBSetting", "ConnectionString", dbstring_new);
+                xo.UpdateElementAttribute(xo.RootNodeName, "CustomSetting", "ConnectionString", dbstring_new);
             }
             this.Close();
         }
@@ -88,6 +90,24 @@ namespace DBTool
                 textBox_Password.Text = string.Empty;
                 textBox_Unicode.Text = string.Empty;
             }
+        }
+
+        private void button_ConnectionTest_Click(object sender, EventArgs e)
+        {
+            DatabaseOperation dbOpera = new DatabaseOperation(textBox_DBString.Text);
+            bool isCanConn = dbOpera.ConnectionTest();
+            if (isCanConn)
+            {
+                this.dbstring_conn = textBox_DBString.Text;
+            }
+            button_Submit.Enabled = isCanConn;
+            string returnMessage = isCanConn ? "测试结果：测试通过，连接成功！" : "测试结果：连接失败！请检查数据库连接字符串";
+            MessageBox.Show(returnMessage);
+        }
+
+        private void textBox_DBString_TextChanged(object sender, EventArgs e)
+        {
+            button_Submit.Enabled = (this.dbstring_conn != string.Empty && this.dbstring_conn == textBox_DBString.Text);
         }
     }
 }
